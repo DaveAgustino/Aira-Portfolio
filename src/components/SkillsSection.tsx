@@ -46,14 +46,7 @@ const SkillsSection = () => {
     }
   ];
 
-  const awards = [
-    {
-      title: '"Engineering Excellence" Award',
-      description: 'Outstanding contributions to project innovation',
-      organization: 'Borcelle Technologies',
-      note: 'Recognition for innovative problem-solving and project leadership'
-    }
-  ];
+
 
   return (
     <section id="skills" className="section-padding bg-background">
