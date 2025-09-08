@@ -2,41 +2,86 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Professional Feminine Portfolio Design System */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Base Colors - Elegant Navy & Rose Gold Palette */
+    --background: 0 0% 99%;
+    --foreground: 215 25% 15%;
 
+    /* Card System */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 215 25% 15%;
 
+    /* Popover System */
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 215 25% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary - Deep Navy */
+    --primary: 215 45% 20%;
+    --primary-foreground: 0 0% 98%;
+    --primary-light: 215 35% 35%;
+    --primary-lighter: 215 25% 50%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Soft Rose Gold */
+    --secondary: 15 25% 92%;
+    --secondary-foreground: 215 25% 15%;
+    --accent-rose: 15 65% 85%;
+    --accent-rose-dark: 15 45% 70%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Neutral Greys */
+    --muted: 210 15% 96%;
+    --muted-foreground: 215 15% 45%;
+    --muted-dark: 215 10% 85%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent Colors */
+    --accent: 215 20% 94%;
+    --accent-foreground: 215 25% 15%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* System Colors */
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Borders & Inputs */
+    --border: 215 15% 88%;
+    --input: 215 15% 92%;
+    --ring: 215 45% 20%;
 
-    --radius: 0.5rem;
+    /* Design System Properties */
+    --radius: 0.75rem;
+    --radius-sm: 0.5rem;
+    --radius-lg: 1rem;
+
+    /* Typography Scale */
+    --font-heading: 'Inter', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+
+    /* Spacing Scale */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-2xl: 4rem;
+
+    /* Shadows - Elegant and Soft */
+    --shadow-sm: 0 2px 8px hsl(215 25% 15% / 0.08);
+    --shadow-md: 0 4px 16px hsl(215 25% 15% / 0.12);
+    --shadow-lg: 0 8px 32px hsl(215 25% 15% / 0.16);
+    --shadow-elegant: 0 8px 40px hsl(215 45% 20% / 0.15);
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
+    --gradient-soft: linear-gradient(135deg, hsl(var(--background)), hsl(var(--accent)));
+    --gradient-rose: linear-gradient(135deg, hsl(var(--accent-rose)), hsl(var(--secondary)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-light)) 50%, hsl(var(--accent-rose)) 100%);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --animation-float: float 6s ease-in-out infinite;
+    --animation-fade-up: fadeUp 0.6s ease-out forwards;
 
     --sidebar-background: 0 0% 98%;
 
@@ -94,12 +139,180 @@ All colors MUST be HSL.
   }
 }
 
+}
+
 @layer base {
   * {
     @apply border-border;
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-body;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    @apply font-medium;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Beautiful Card Components */
+  .card-elegant {
+    @apply bg-card border border-border rounded-lg shadow-sm;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-smooth);
+  }
+
+  .card-elegant:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+
+  .card-feature {
+    @apply bg-card border border-border rounded-xl p-6;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-smooth);
+  }
+
+  .card-feature:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+  }
+
+  /* Button Variants */
+  .btn-hero {
+    @apply px-8 py-4 font-medium rounded-lg;
+    background: var(--gradient-primary);
+    color: hsl(var(--primary-foreground));
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-smooth);
+  }
+
+  .btn-hero:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+
+  .btn-soft {
+    @apply px-6 py-3 font-medium rounded-lg;
+    background: hsl(var(--accent-rose));
+    color: hsl(var(--primary));
+    transition: var(--transition-smooth);
+  }
+
+  .btn-soft:hover {
+    background: hsl(var(--accent-rose-dark));
+    transform: translateY(-1px);
+  }
+
+  /* Section Styles */
+  .section-padding {
+    @apply py-16 px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-container {
+    @apply max-w-7xl mx-auto;
+  }
+
+  /* Typography Styles */
+  .heading-hero {
+    @apply text-4xl sm:text-5xl lg:text-6xl font-bold;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .heading-section {
+    @apply text-3xl sm:text-4xl font-bold text-primary mb-8;
+  }
+
+  .text-elegant {
+    @apply text-lg leading-relaxed text-muted-foreground;
+  }
+
+  /* Timeline Styles */
+  .timeline-item {
+    @apply relative pl-8 pb-8;
+  }
+
+  .timeline-item::before {
+    content: '';
+    @apply absolute left-0 top-0 w-3 h-3 rounded-full;
+    background: var(--gradient-primary);
+  }
+
+  .timeline-item::after {
+    content: '';
+    @apply absolute left-1 top-3 w-0.5 h-full;
+    background: hsl(var(--border));
+  }
+
+  .timeline-item:last-child::after {
+    display: none;
+  }
+
+  /* Navigation Styles */
+  .nav-elegant {
+    @apply fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border;
+    transition: var(--transition-smooth);
+  }
+
+  .nav-link {
+    @apply px-4 py-2 rounded-lg font-medium text-muted-foreground;
+    transition: var(--transition-smooth);
+  }
+
+  .nav-link:hover {
+    @apply text-primary bg-accent;
+  }
+
+  .nav-link.active {
+    @apply text-primary bg-accent-rose;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-elegant {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
   }
 }
